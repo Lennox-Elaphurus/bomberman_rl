@@ -6,8 +6,9 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.utils.class_weight import compute_sample_weight
 import joblib
-from RuleBasedAgent import RuleBasedAgent
-from GetFeatures import GetFeatures
+# from agent_code.Peacemaker import RuleBasedAgent
+from agent_code.Peacemaker.GetFeatures import GetFeatures
+
 
 ACTION_MAP = ['UP', 'DOWN', 'LEFT', 'RIGHT', 'WAIT', 'BOMB']
 ACTION_INV_MAP = {"UP": 0, "DOWN": 1, "LEFT": 2, "RIGHT": 3, "WAIT": 4, "BOMB": 5}
@@ -29,12 +30,14 @@ def setup(self):
     if self.train and not os.path.isfile("./models/random_forest_model.joblib"):
         print("Error: model not found.")
     else:
+       
         self.model = joblib.load('./models/random_forest_model.joblib')
-    
+        # with open('./models/random_forest_model.pkl', 'rb') as f:
+        #     self.model = pickle.load(f)
     
     self.random_seed = np.random.randint(1, 2**31 -1)
     self.get_feature_class = GetFeatures()
-    self.rule_based_model = RuleBasedAgent(self.random_seed)
+    # self.rule_based_model = RuleBasedAgent(self.random_seed)
 
 
 def act(self, game_state: dict) -> str:

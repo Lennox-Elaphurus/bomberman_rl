@@ -111,5 +111,5 @@ screenshots/*.webm
 
 replays/
 results/
-agent_code/RandomForest/models/random_forest_model - 256-512.joblib
-agent_code/Peacemaker/models/random_forest_model - 256-512.joblib
+*.joblib
+*models/
